@@ -18,8 +18,34 @@ if(fs.existsSync("./ejemplo.txt")){
 // fs.unlinkSync('./ejemplo.txt')
 
 
+/**
+ * fs.promises
+ * 
+ * 
+ */
 
 
+const consultasTEXT = async () => {
+    await fs.promises.writeFile('./ejemplo2.txt', "HOla segundo texto")
+
+    let resultado = await fs.promises.readFile('./ejemplo2.txt', 'utf-8')
+    console.log(resultado)
+
+    await fs.promises.appendFile('./ejemplo2.txt', JSON.stringify(mypersona.nombre))
+    resultado = await fs.promises.readFile('./ejemplo2.txt', ('utf-8'))
+    console.log(resultado)
+
+    await fs.promises.unlink('./ejemplo2.txt')
+}
+
+
+consultasTEXT();
+
+
+const mypersona = {
+    nombre:"Daniel",
+    apellido: "Lugo"
+}
 
 
 
