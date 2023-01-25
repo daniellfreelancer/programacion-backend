@@ -1,3 +1,5 @@
+import {promises as fs} from 'fs'
+
 class Product {
   constructor(title, description, price, thumbnail, code, stock) {
     this.title = title;
@@ -14,6 +16,7 @@ class ProductManager {
   constructor() {
     this.products = [];
     this.id = 0;
+    this.patch = "./products.txt"
   }
 
   addProduct(title, description, price, thumbnail, code, stock) {
