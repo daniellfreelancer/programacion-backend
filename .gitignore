@@ -1,5 +1,7 @@
-/clase-6.js
-#Clase
-./Persona.js
 
+#Clases
 /files
+
+#node
+/node_modules
+./package-lock.json

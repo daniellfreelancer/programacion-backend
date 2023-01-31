@@ -1,4 +1,4 @@
-import {promises as fs} from 'fs'
+import { promises as fs } from 'fs'
 
 class Product {
   constructor(title, description, price, thumbnail, code, stock) {
@@ -11,7 +11,7 @@ class Product {
   }
 }
 
-class ProductManager {
+export class ProductManager {
 
   constructor() {
     this.products = [];
@@ -20,8 +20,8 @@ class ProductManager {
   }
 
   addProduct = async (title, description, price, thumbnail, code, stock) => {
-    
-    
+
+
 
     try {
       if (this.findProductByCode(code)) {
@@ -43,9 +43,9 @@ class ProductManager {
     }
   }
 
-  readAllProducts = async ()=>{
-    let response =  await fs.readFile(this.patch, "utf-8")
-    return  JSON.parse(response)
+  readAllProducts = async () => {
+    let response = await fs.readFile(this.patch, "utf-8")
+    return JSON.parse(response)
   }
 
   getProducts = async () => {
@@ -55,7 +55,7 @@ class ProductManager {
   }
 
   getProductsById = async (id) => {
-    let response =  await this.readAllProducts()
+    let response = await this.readAllProducts()
 
     let product = response.find((item) => item.id === id);
 
@@ -67,15 +67,16 @@ class ProductManager {
     return product;
   }
 
-  deleteProductoById = async (id)=>{
+  deleteProductoById = async (id) => {
 
     let response = await this.readAllProducts();
+
     let responseFilter = response.filter(products => products.id != id)
 
     await fs.writeFile(this.patch, JSON.stringify(responseFilter))
     console.log(`${id} has been deleted`)
     console.log(responseFilter)
-    
+
 
 
   }
@@ -114,6 +115,10 @@ class ProductManager {
 
 const newCollection = new ProductManager();
 
+
+
+// newCollection.getProductsById(0)
+//item 01
 // newCollection.addProduct(
 //   "Poroto",
 //   "Porotos Negros",
@@ -122,7 +127,7 @@ const newCollection = new ProductManager();
 //   "001",
 //   100
 // );
-
+// //item 02
 // newCollection.addProduct(
 //   "Poroto",
 //   "Porotos Rojos",
@@ -131,7 +136,7 @@ const newCollection = new ProductManager();
 //   "002",
 //   200
 // );
-
+// //item 03
 // newCollection.addProduct(
 //   "Porotos",
 //   "Porotos Blancos",
@@ -140,7 +145,7 @@ const newCollection = new ProductManager();
 //   "003",
 //   150
 // );
-
+// //item 04
 // newCollection.addProduct(
 //   "Porotos",
 //   "Porotos verdes",
@@ -149,26 +154,57 @@ const newCollection = new ProductManager();
 //   "004",
 //   300
 // );
-
+// //item 05
 // newCollection.addProduct(
 //   "Porotos",
-//   "Porotos Naranja",
+//   "Porotos Marron",
 //   2500,
 //   "url:pic",
 //   "005",
 //   0
 // );
-
-// console.log(newCollection.getProducts());
-
-// newCollection.addProduct("Porotos", "Porotos Rosa", 3000, "url:pic", "002");
-
-// console.log(newCollection.getProducts());
-// console.log(newCollection.getProductsById(1));
-
-
-// newCollection.deleteProductoById(1)
-
-newCollection.updateProduct(4, { stock: 10})
-
-newCollection.getProducts()
+// //item 06
+// newCollection.addProduct(
+//   "Lenteja",
+//   "Lentejas Común",
+//   1200,
+//   "url:pic",
+//   "006",
+//   100
+// );
+// //item 07
+// newCollection.addProduct(
+//   "Lenteja",
+//   "Lentejas Chicas",
+//   2500,
+//   "url:pic",
+//   "007",
+//   200
+// );
+// //item08
+// newCollection.addProduct(
+//   "Lenteja",
+//   "Lentejas Naranjas",
+//   5000,
+//   "url:pic",
+//   "008",
+//   1500
+// );
+// //item09
+// newCollection.addProduct(
+//   "Lenteja",
+//   "Porotos Amarillas",
+//   2500,
+//   "url:pic",
+//   "009",
+//   450
+// );
+// //item10
+// newCollection.addProduct(
+//   "Lenteja",
+//   "Porotos Grandes",
+//   2500,
+//   "url:pic",
+//   "0010",
+//   60
+// );
