@@ -1,44 +1,16 @@
-// const http = require('http')
-
-// const PORT = 4000
-
-// const server = http.createServer((req, res)=>{
-//     res.end("Este es el primer servidor")
-// })
-
-// server.listen(PORT, ()=>{
-//     console.log(`Server ready on ${PORT}`)
-// })
-
-// const http = require('http')
-
-// //import * as http from 'http'
-// const PORT = 5050
-
-// const server = http.createServer((request, response) => {
-//     response.end("Este es el primer servidor!")
-// })
-
-// server.listen(PORT, () => {
-//     console.log(`Server on port ${PORT}`)
-// })
-
-
 import express from 'express'
 import {ProductManager} from './products/ProductManager.js'
+import cookieParser from 'cookie-parser'
 
 
 const PORT = 8080
 const app = express()
 const productManager = new ProductManager();
 
-const productos = [
-    {id:1,title: "porotos"},
-    {id:2,title:"arroz"}
-]
+
 
 app.use(express.urlencoded({extended:true})) // permite busquedas de url complejas
-
+app.use(cookieParser())
 app.get('/contacto', (req,res)=>{
     res.send('Hola esta es la pagina de contacto')
 })
